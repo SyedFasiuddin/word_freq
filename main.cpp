@@ -7,16 +7,16 @@ using namespace std;
 int main(){
     Map map; 
     
-    string inputStr;
-    string findWord;
+    string inputStr = "this is a string which is given as input";
+    string findWord = "string";
     
-    cout << "Enter a string: ";
-    getline(cin, inputStr);
+    // cout << "Enter a string: ";
+    // getline(cin, inputStr);
 
     map.setInput(inputStr);
 
-    cout << "Enter a word to find: ";
-    cin >> findWord;
+    // cout << "Enter a word to find: ";
+    // cin >> findWord;
 
     map.setWord(findWord);
 

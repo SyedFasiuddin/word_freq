@@ -14,10 +14,12 @@ class Map{
         string word;
 
     public:
-        void setInput(string str);
-        void setWord(string word);
+        void setInput(string inStr);
+        void setWord(string inWord);
         void createStrMap();
         void display();
+        string getStr();
+        string getWord();
 };
 
 #endif
