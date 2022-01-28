@@ -2,3 +2,6 @@ main
 *.exe
 *.o
 *.swp
+*.txt
+.idea
+.vscode

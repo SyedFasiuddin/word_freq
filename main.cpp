@@ -1,32 +1,24 @@
-#include <iostream>
-#include <cstring>
 #include "include/Map.h"
 
-using namespace std;
+using std::cin;
 
-int main(){
-    Map map; 
-    
-    string inputStr = "this is a string which is given as input";
-    string findWord = "string";
-    
-    // cout << "Enter a string: ";
-    // getline(cin, inputStr);
+int main(int argc, char *argv[]){
+    if(argc == 2){
+        MapFreq newMap;
+        newMap.setString(argv[1]);
+        newMap.createFrequencyMap();
+        newMap.displayFrequency();
+        return 0;
+    }
 
-    map.setInput(inputStr);
+    string inputString = "";
+    cout << "Enter a string: ";
+    getline(cin, inputString);
 
-    // cout << "Enter a word to find: ";
-    // cin >> findWord;
-
-    map.setWord(findWord);
-
-    map.createStrMap();
-
-    map.display();
-
-   /*  for(int i = 0; i < str.length() - 1; i++){ */
-        /* cout << str.find(word, i) << endl; */
-    /* } */
+    MapFreq newMap;
+    newMap.setString(inputString);
+    newMap.createFrequencyMap();
+    newMap.displayFrequency();
 
     return 0;
 }

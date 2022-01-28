@@ -9,4 +9,4 @@ Map.o: ./include/Map.cpp ./include/Map.h
 	g++ -c ./include/Map.cpp
 
 clean:
-	rm *.o *.exe
+	rm *.o main 

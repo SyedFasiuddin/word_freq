@@ -1,49 +1,40 @@
-#include <iostream>
 #include "Map.h"
 
-void Map::setInput(string inStr){
-    str = inStr;
+void MapFreq::setString(string text){
+    str = text;
 }
 
-void Map::setWord(string inWord){
-    word = inWord;
-}
-
-void Map::createStrMap(){
-    for(int i = 0; i < str.size(); i++){
-        if(str[i] == ' '){
-            for(int j = 0; j < ARR_SIZE; j++){
-                if(word == mapArr[j][0]){
-                    mapArr[j][1] = to_string(
-                                stoi(mapArr[j][1]) + 1
-                            );
-                    word = "";
-                    break;
-                } else {
-                    mapIdx++;
-                    mapArr[mapIdx][0] = word;
-                    mapArr[mapIdx][1] = to_string(1);
-                    word = "";
-                    break;
-                }
+void MapFreq::createFrequencyMap(void){
+    for (int i = 0; i < str.size(); i++) {
+        if (str[i] == ' ') {
+            if (M.find(word) == M.end()) {
+                M.insert(make_pair(word, 1));
+                word = "";
+            }
+            else {
+                M[word]++;
+                word = "";
             }
         } else {
+            if( str[i] != 32 && (str[i] <= 64 || str[i] >= 123 || ((str[i] >= 91) && (str[i] <= 96)))){
+                cout << "The string you have entered contains numbers or other symbols";
+                exit(1);
+            }
+            std::transform(str.begin(), str.end(), str.begin(), ::tolower);
             word += str[i];
         }
     }
+
+    if (M.find(word) == M.end())
+        M.insert(make_pair(word, 1));
+    else
+        M[word]++;
 }
 
-void Map::display(){
-    for(int i = 0; i <= mapIdx; i++){
-        cout << mapArr[i][0] << ": " << mapArr[i][1] << endl;
+void MapFreq::displayFrequency(void){
+    for (auto& itObj : M) {
+        cout << itObj.first << " - "
+             << itObj.second
+             << endl;
     }
 }
-
-string Map::getStr(){
-    return str;
-}
-
-string Map::getWord(){
-    return word;
-}
-
