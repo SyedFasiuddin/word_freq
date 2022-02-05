@@ -1,10 +1,11 @@
 #include "Map.h"
 
-void MapFreq::setString(string text){
+void MapFreq::setString(std::string text){
     str = text;
 }
 
 void MapFreq::createFrequencyMap(void){
+    std::transform(str.begin(), str.end(), str.begin(), ::tolower);
     for (int i = 0; i < str.size(); i++) {
         if (str[i] == ' ') {
             if (M.find(word) == M.end()) {
@@ -16,11 +17,10 @@ void MapFreq::createFrequencyMap(void){
                 word = "";
             }
         } else {
-            if( str[i] != 32 && (str[i] <= 64 || str[i] >= 123 || ((str[i] >= 91) && (str[i] <= 96)))){
-                cout << "The string you have entered contains numbers or other symbols";
+/*            if( str[i] != 32 && (str[i] <= 64 || str[i] >= 123 || ((str[i] >= 91) && (str[i] <= 96)))){
+                cout << "The string you have entered contains numbers or other symbols\n";
                 exit(1);
-            }
-            std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+            } */
             word += str[i];
         }
     }
@@ -33,8 +33,9 @@ void MapFreq::createFrequencyMap(void){
 
 void MapFreq::displayFrequency(void){
     for (auto& itObj : M) {
-        cout << itObj.first << " - "
-             << itObj.second
-             << endl;
+        if(itObj.first == "") continue;
+        std::cout << std::setw(15) << itObj.first << " - "
+             << std::setw(2) << itObj.second
+             << "\n";
     }
 }

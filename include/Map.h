@@ -2,21 +2,17 @@
 #define _MAP_H_
 
 #include <iostream>
-#include <map>
+#include <iomanip>
 #include <algorithm>
-
-using std::string;
-using std::map;
-using std::cout;
-using std::endl;
+#include <map>
 
 class MapFreq{
     private:
-        map<string, int> M;
-        string word = "";
-        string str = "";
+        std::map<std::string, int> M;
+        std::string word = "";
+        std::string str = "";
     public:
-        void setString(string text);
+        void setString(std::string text);
         void createFrequencyMap(void);
         void displayFrequency(void);
 };
